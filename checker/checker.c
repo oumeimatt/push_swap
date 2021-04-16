@@ -6,12 +6,13 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:03 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/15 13:54:55 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/04/16 17:29:44 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include <stdio.h>
+#include <string.h>
 
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -102,14 +103,69 @@ void	read_operations()
 {
 	int ret;
 	char *line;
+
 	while ((ret = get_next_line(0, &line))> 0)
 	{
 		incorrect_instruc(line);
 	}
 }
+void store_data(int argc, char **argv, t_args **head)
+{
+	int i;
+	// int j;
+	
+	i = 1;
+	// // j = 1;
+	// head = NULL;
+	// head = (t_args *)malloc(sizeof(t_args));
+	// head->data = argv[1];
+	// // stack_a[0] = head->data;
+	// while (i < argc)
+	// {
+	// 	head->next = (t_args *)malloc(sizeof(t_args));
+	// 	head->next->data = argv[i];
+	// 	// stack_a[j] = head->next->data;
+	// 	i++;
+	// 	// j++;
+	// }
+	while (i < argc)
+	{
+	    t_args* new_node = (t_args*) malloc(sizeof(t_args));
+    	new_node -> data = argv[i];
+    	new_node -> next = (*head);
+    	(*head) = new_node;
+	}
+	check_for_dup(*head);
+}
+
+void	check_for_dup(t_args *temp)
+{
+	t_args *temp1;
+	t_args *temp2;
+
+	temp1 = temp;
+	while (temp1 != NULL && temp1->next != NULL)
+	{
+		temp2 = temp1;
+		while (temp2->next != NULL)
+		{
+			if (temp1->data == temp2->next->data)
+			{
+				write (1, "Error\n", 6);
+				exit (0);
+			}
+			else
+				temp2 = temp2->next;
+		}
+		temp1 = temp1->next;
+	}
+	
+}
 int main(int argc, char **argv)
 {
 	int i;
+	t_args *head;
+	// char *stack_a;
 
 	i = 1;
 	if (argc == 1)
@@ -126,6 +182,7 @@ int main(int argc, char **argv)
 			i++;
 		}
 	}
+	store_data(argc, argv, &head);
 	read_operations();
 	
 }

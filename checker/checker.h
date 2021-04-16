@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:00 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/15 12:11:46 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/04/16 16:28:48 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,11 @@
 #include "../libft/libft.h"
 
 
-
-typedef	struct	s_data
+typedef	struct	s_args
 {
-	int	data;
-	struct s_data* next;
-}				t_data;
+	char	*data;
+	struct s_args* next;
+}				t_args;
 
 typedef struct	s_oper
 {
@@ -31,9 +30,22 @@ typedef struct	s_oper
 	struct s_oper* next;
 }				t_oper;
 
-
-
 #define BUFFER_SIZE 100
+
+
+//checker 
+void	ft_error();
+int		check_arg(char *str);
+void	check_for_dup(t_args *head);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		valid_instructions_1(char *line);
+int		alid_instructions_2(char *line);
+void	incorrect_instruc(char *line);
+void	read_operations();
+int 	main(int argc, char **argv);
+
+
+// get_next_line
 size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(const char *s1);
