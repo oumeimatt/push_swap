@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oumeima <oumeima@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:00 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/18 14:35:45 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/04/18 22:12:17 by oumeima          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,29 @@
 #include <string.h>
 
 
-typedef	struct	s_stack
+typedef	struct	s_args
 {
-	char	*stack_a;
-	struct s_stack* next;
-}				t_stack;
+	char	*data;
+	struct s_args* next;
+}				t_args;
 
-typedef struct	s_oper
+typedef struct	s_stack
 {
-	char	*instuc;
-	struct s_oper* next;
-}				t_oper;
+	t_args	*stack_a;
+	t_args	*stack_b;
+}				t_stack;
 
 #define BUFFER_SIZE 100
 
 
 //checker.c
 void	ft_error();
-void	check_for_dup(t_stack *head);
+void	check_for_dup(t_args *head);
 int		valid_instructions_1(char *line);
 int		valid_instructions_2(char *line);
 void	incorrect_instruc(char *line);
-void	store_data(int argc, char **argv, t_stack **head);
-void	check_for_dup(t_stack *temp);
+void	store_data(int argc, char **argv, t_args **head);
+void	check_for_dup(t_args *temp);
 void	read_operations();
 int 	main(int argc, char **argv);
 
