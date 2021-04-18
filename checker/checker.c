@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:03 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/17 14:58:32 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/04/18 14:35:43 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,25 +76,26 @@ void	read_operations()
 	}
 }
 
-void store_data(int argc, char **argv, t_args **head)
+void store_data(int argc, char **argv, t_stack **head)
 {
 	int i;
+	t_stack* stack;
 
-	i = 1;
-	while (i < argc)
+	i = argc -1;
+	while (i > 0)
 	{
-	    t_args* args = (t_args*) malloc(sizeof(t_args));
-    	args->data = argv[i];
-    	args->next = (*head);
-    	(*head) = args;
-		i++;
+	    stack = (t_stack*) malloc(sizeof(t_stack));
+    	stack->stack_a = argv[i];
+    	stack->next = (*head);
+    	(*head) = stack;
+		i--;
 	}
 }
 
-void	check_for_dup(t_args *temp)
+void	check_for_dup(t_stack *temp)
 {
-	t_args *temp1;
-	t_args *temp2;
+	t_stack *temp1;
+	t_stack *temp2;
 
 	temp1 = temp;
 	while (temp1 != NULL && temp1->next != NULL)
@@ -102,8 +103,11 @@ void	check_for_dup(t_args *temp)
 		temp2 = temp1;
 		while (temp2->next != NULL)
 		{
-			if (ft_strcmp(temp1->data, temp2->next->data) == 0)
+			if (ft_strcmp(temp1->stack_a, temp2->next->stack_a) == 0)
+			{
+				write(1, "333\n",4);
 				ft_error();
+			}
 			else
 				temp2 = temp2->next;
 		}
@@ -111,19 +115,19 @@ void	check_for_dup(t_args *temp)
 	}	
 }
 
-void display_list(t_args *args)
+void display_list(t_stack *stack)
 {
-    while (args!=NULL)
+    while (stack!=NULL)
     {
-        printf("%s\n" , args->data);
-        args = args->next;
+        printf("%s\n" , stack->stack_a);
+        stack = stack->next;
     }
 }
 
 int main(int argc, char **argv)
 {
 	int i;
-	t_args *head;
+	t_stack *head;
 
 	i = 1;
 	if (argc == 1)
@@ -137,8 +141,8 @@ int main(int argc, char **argv)
 		}
 	}
 	store_data(argc, argv, &head);
-	check_for_dup(head);
+	// check_for_dup(head);
 	display_list(head);
-	read_operations();
+	// read_operations();
 }
 

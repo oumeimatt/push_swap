@@ -6,7 +6,7 @@
 #    By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/17 13:08:32 by oel-yous          #+#    #+#              #
-#    Updated: 2021/04/17 15:00:02 by oel-yous         ###   ########.fr        #
+#    Updated: 2021/04/18 13:17:09 by oel-yous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = checker
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 
 SRCS = checker.c utils.c get_next_line.c get_next_line_utils.c operations.c
 
