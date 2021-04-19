@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oumeima <oumeima@student.42.fr>            +#+  +:+       +#+        */
+/*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:00 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/18 22:12:17 by oumeima          ###   ########.fr       */
+/*   Updated: 2021/04/19 14:13:54 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,20 @@ int		valid_instructions_2(char *line);
 void	incorrect_instruc(char *line);
 void	store_data(int argc, char **argv, t_args **head);
 void	check_for_dup(t_args *temp);
-void	read_operations();
+void	read_operations(t_args **args);
 int 	main(int argc, char **argv);
 
 //utils.c
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(char *str);
+
+
+//operations.c
+void    swap_oper(t_args **args ,char c);
+void    help_swap(t_args **head, char c);
+
+
 
 // get_next_line
 size_t	ft_strlen(const char *str);
