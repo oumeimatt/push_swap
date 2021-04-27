@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:00 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/19 14:13:54 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/04/27 13:01:16 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@
 #include <stdio.h>
 #include <string.h>
 
-
+# define TRUE 0
+# define FALSE 1
 typedef	struct	s_args
 {
-	char	*data;
+	int	data;
 	struct s_args* next;
 }				t_args;
 
@@ -40,10 +41,11 @@ void	check_for_dup(t_args *head);
 int		valid_instructions_1(char *line);
 int		valid_instructions_2(char *line);
 void	incorrect_instruc(char *line);
-void	store_data(int argc, char **argv, t_args **head);
+t_args	store_data(int argc, char **argv, t_args **head);
 void	check_for_dup(t_args *temp);
 void	read_operations(t_args **args);
 int 	main(int argc, char **argv);
+void display_list(t_args *head);
 
 //utils.c
 int		ft_strcmp(char *s1, char *s2);
@@ -52,10 +54,12 @@ int		ft_atoi(char *str);
 
 
 //operations.c
-void    swap_oper(t_args **args ,char c);
-void    help_swap(t_args **head, char c);
+void    swap_oper(t_args **args);
+void    swap_function(t_args **args, char *line);
+void    exec_instructions(t_args *args, char *line);
 
-
+// sort.c
+int     is_sorted(t_args *head);
 
 // get_next_line
 size_t	ft_strlen(const char *str);

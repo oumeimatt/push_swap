@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:03 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/19 14:27:23 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/04/27 14:56:22 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,26 @@
 
 int		valid_instructions_1(char *line)
 {
+	if (line[1] == '\0')
+		return(0);
 	if (line[0] == 's')
 	{
 		if (ft_strncmp(line, "sa\0", 3) != 0 && ft_strncmp(line, "sb\0", 3) != 0
 		&& ft_strncmp(line, "ss\0", 3) != 0)
-			return (1);
+			return (FALSE);
 	}
 	if (line[0] == 'r')
 	{
 		if (ft_strncmp(line, "ra\0", 3) != 0 && ft_strncmp(line, "rb\0", 3) != 0
 		&& ft_strncmp(line, "rr\0", 3) != 0)
-			return (1);
+			return (FALSE);
 	}
 	if (line[0] == 'p')
 	{
 		if (ft_strncmp(line, "pa\0", 3) != 0 && ft_strncmp(line, "pb\0", 3) != 0)
-			return (1);
+			return (FALSE);
 	}
-	return (0);
+	return (TRUE);
 }
 
 int		valid_instructions_2(char *line)
@@ -39,11 +41,11 @@ int		valid_instructions_2(char *line)
 	if (line[0] == 'r' && line[1] == 'r')
 	{
 		if (line[2] != 'r' && line[2] != 'a' && line[2] != 'b')
-			return (1);
-		return (0);
+			return (FALSE);
+		return (TRUE);
 	}
 	else
-		return (1);
+		return (FALSE);
 }
 
 void	ft_error()
@@ -70,20 +72,27 @@ void	read_operations(t_args **args)
 	int ret;
 	char *line;
 	t_args *list;
+	// t_stack *stack;
+	
 
 	list = *args;
 	while ((ret = get_next_line(0, &line))> 0)
 	{
+		if (line[0] == '\0')
+			break;
 		incorrect_instruc(line);
-		if (line[0] == 's')
-		{
-			if (line[1] == 'a')
-				help_swap(args, 'a');
-		}
+		exec_instructions(list, line);
+
 	}
+	printf("----------------\n");
+	display_list(list);
+	if (is_sorted(list) == TRUE)
+		write(1,"OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 }
 
-void store_data(int argc, char **argv, t_args **head)
+t_args store_data(int argc, char **argv, t_args **head)
 {
 	int i;
 	t_args* args;
@@ -94,7 +103,9 @@ void store_data(int argc, char **argv, t_args **head)
 	{
 		args = (t_args*) malloc(sizeof(t_args));
 		stack->stack_a = (t_args*)malloc(sizeof(t_args) * argc);
-    	args->data = argv[i];
+    	stack->stack_b = (t_args*)malloc(sizeof(t_args) * argc);
+		args = stack->stack_a;
+		args->data = ft_atoi(argv[i]);
 		stack->stack_a->data = args->data;
 		// printf("args->data == %s\n", args->data);
 		// printf("stack->stack_a->data == %s\n", stack->stack_a->data);
@@ -102,7 +113,7 @@ void store_data(int argc, char **argv, t_args **head)
     	(*head) = args;
 		i--;
 	}
-	
+	return (*stack->stack_a);
 }
 
 void	check_for_dup(t_args *temp)
@@ -116,7 +127,7 @@ void	check_for_dup(t_args *temp)
 		temp2 = temp1;
 		while (temp2->next != NULL)
 		{
-			if (ft_strcmp(temp1->data, temp2->next->data) == 0)
+			if (temp1->data == temp2->next->data)
 				ft_error();
 			else
 				temp2 = temp2->next;
@@ -131,7 +142,7 @@ void display_list(t_args *head)
 
     while (current != NULL)
     {
-        printf("%s\n" , current->data);
+        printf("%d\n" , current->data);
         current = current->next;
     }
 }
@@ -156,7 +167,6 @@ int main(int argc, char **argv)
 	check_for_dup(head);
 	display_list(head);
 	read_operations(&head);
-	printf ("----------\n");
-	display_list(head);
+	// printf ("----------\n");
+	// display_list(head);
 }
-

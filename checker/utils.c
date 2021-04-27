@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 12:59:41 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/19 10:29:59 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/04/27 13:47:59 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,15 @@ int		ft_atoi(char *str)
 	signe = 1;
     if (str[0] == '-')
     {
+		if (str[1] == '\0')
+			ft_error();
         signe = -1;
         i = 1;
     }
     r = 0;
 	while (str[i] != '\0')
 	{
-		if ((int)str[i] < 48 || (int)str[i] > 57)
+		if (str[i] < 48 || str[i] > 57) 
 			ft_error();
 	    else
 	    {

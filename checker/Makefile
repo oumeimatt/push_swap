@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oumeima <oumeima@student.42.fr>            +#+  +:+       +#+         #
+#    By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/17 13:08:32 by oel-yous          #+#    #+#              #
-#    Updated: 2021/04/18 22:15:05 by oumeima          ###   ########.fr        #
+#    Updated: 2021/04/27 12:34:32 by oel-yous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
-SRCS = checker.c utils.c get_next_line.c get_next_line_utils.c operations.c
+SRCS = checker.c utils.c get_next_line.c get_next_line_utils.c operations.c sort.c
 
 OBJS = $(SRCS:.c=.o)
 
