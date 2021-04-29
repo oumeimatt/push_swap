@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:59:25 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/27 13:09:53 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/04/29 11:41:59 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void    exec_instructions(t_args *args, char *line)
         swap_oper(&args);
         // swap_function(&args, line);
     }
-        //swap_function "swap top two numbers";
+       //swap_function "swap top two numbers";
 //     if (line[0] == 'p')
 //         // push_function "send top of * to top of *";
 //     if (line[0] == 'r' && ft_strlen(line) == 2)
@@ -90,4 +90,29 @@ void    exec_instructions(t_args *args, char *line)
 //     if (line[0] == 'r' && ft_strlen(line) == 3)
 //         // rotate_2_function "bottom goes to top"
 }
-  
+
+
+void    rotate_list(t_args **head_ref, int k)
+{
+    t_args *current;
+    t_args *kth_node;
+    int count;
+    
+    if (k == 0)
+        return;
+    current = *head_ref;
+    count = 1;
+    while (count < k && current != NULL)
+    {
+        current = current->next;
+        count++;
+    }
+    if (current == NULL)
+        return;
+    kth_node = current;
+    while (current->next != NULL)
+        current = current->next;
+    current->next = *head_ref;
+    *head_ref = kth_node->next;
+    kth_node->next = NULL;
+}

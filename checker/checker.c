@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:03 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/27 14:56:22 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/04/29 11:45:24 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,8 @@ t_args store_data(int argc, char **argv, t_args **head)
 		args = (t_args*) malloc(sizeof(t_args));
 		stack->stack_a = (t_args*)malloc(sizeof(t_args) * argc);
     	stack->stack_b = (t_args*)malloc(sizeof(t_args) * argc);
-		args = stack->stack_a;
+		// args = stack->stack_a;
 		args->data = ft_atoi(argv[i]);
-		stack->stack_a->data = args->data;
 		// printf("args->data == %s\n", args->data);
 		// printf("stack->stack_a->data == %s\n", stack->stack_a->data);
     	args->next = (*head);
@@ -167,6 +166,7 @@ int main(int argc, char **argv)
 	check_for_dup(head);
 	display_list(head);
 	read_operations(&head);
-	// printf ("----------\n");
-	// display_list(head);
+	printf ("----------\n");
+	rotate_list(&head, argc - 2);
+	display_list(head);
 }

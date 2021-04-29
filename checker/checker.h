@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:00 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/27 13:01:16 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/04/29 11:36:39 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int		ft_atoi(char *str);
 void    swap_oper(t_args **args);
 void    swap_function(t_args **args, char *line);
 void    exec_instructions(t_args *args, char *line);
-
+void     remove_first(t_args **head);
+void    rotate_list(t_args **head_ref, int k);
 // sort.c
 int     is_sorted(t_args *head);
 
