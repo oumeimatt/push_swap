@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:59:25 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/29 11:41:59 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/02 12:55:35 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ void    exec_instructions(t_args *args, char *line)
         swap_oper(&args);
         // swap_function(&args, line);
     }
+    if (line[0] == 'r')
+    {
+        rotate_list(&args, 1);
+        display_list(args);
+    }
        //swap_function "swap top two numbers";
 //     if (line[0] == 'p')
 //         // push_function "send top of * to top of *";
@@ -116,3 +121,63 @@ void    rotate_list(t_args **head_ref, int k)
     *head_ref = kth_node->next;
     kth_node->next = NULL;
 }
+
+// void    push_to_other_stack(t_args *from, t_args *to)
+// {
+//     t_args *save;
+//     t_args *stock;
+
+//     if (!from)
+//         return;
+//     save = from;
+//     delete_node(from, 0);
+//     if (!to)
+//     {
+//         to = save;
+//         to->next = NULL;
+//     }
+//     else
+//     {
+        
+//     }
+// }
+
+t_args *add_node(t_args *head, int data)
+{
+    t_args *node;
+    node = (t_args*)malloc(sizeof(t_args));
+    node->data = data;
+    node->next = head;
+    return (node);
+}
+// void    delete_node(t_args **head_ref, int position)
+// {
+//     t_args  *temp;
+//     int i;
+//     t_args  *next;
+
+//    if (*head_ref == NULL)
+//       return;
+//    temp = *head_ref;
+//     if (position == 0)
+//     {
+//         *head_ref = temp->next;
+//         free(temp);
+//         return;
+//     }
+//     i = 0;
+//     while (temp != NULL && i < position - 1)
+//     {
+//          temp = temp->next;
+//          i++;
+//     }
+//     if (temp == NULL || temp->next == NULL)
+//          return;
+ 
+//     // Node temp->next is the node to be deleted
+//     // Store pointer to the next of node to be deleted
+//     next = temp->next->next;
+//     // Unlink the node from linked list
+//     free(temp->next);  // Free memory
+//     temp->next = next;  // Unlink the deleted node from list
+// }

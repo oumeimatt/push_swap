@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:00 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/29 11:36:39 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/02 12:53:46 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct	s_stack
 	t_args	*stack_b;
 }				t_stack;
 
-#define BUFFER_SIZE 100
+#define BUFFER_SIZE 1000
 
 
 //checker.c
@@ -57,8 +57,11 @@ int		ft_atoi(char *str);
 void    swap_oper(t_args **args);
 void    swap_function(t_args **args, char *line);
 void    exec_instructions(t_args *args, char *line);
-void     remove_first(t_args **head);
+void	remove_first(t_args **head);
+t_args *add_node(t_args *head, int data);
 void    rotate_list(t_args **head_ref, int k);
+void	delete_node(t_args **head_ref, int position);
+void    push_to_other_stack(t_args *from, t_args *to);
 // sort.c
 int     is_sorted(t_args *head);
 

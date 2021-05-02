@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:03 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/29 11:45:24 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/02 12:55:40 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		valid_instructions_1(char *line)
 {
 	if (line[1] == '\0')
-		return(0);
+		return(TRUE);
 	if (line[0] == 's')
 	{
 		if (ft_strncmp(line, "sa\0", 3) != 0 && ft_strncmp(line, "sb\0", 3) != 0
@@ -59,8 +59,8 @@ void	incorrect_instruc(char *line)
 	int	len;
 	
 	len = ft_strlen(line);
-	if ((len == 2 && valid_instructions_1(line) == 1) || 
-	(len == 3 && valid_instructions_2(line) == 1))
+	if ((len == 2 && valid_instructions_1(line)) || 
+	(len == 3 && valid_instructions_2(line)))
 		ft_error();	
 	if (len < 2 || len > 3 ||
 	 (line[0] != 'r' && line[0] != 's' && line[0] != 'p'))
@@ -165,8 +165,13 @@ int main(int argc, char **argv)
 	store_data(argc, argv, &head);
 	check_for_dup(head);
 	display_list(head);
-	read_operations(&head);
-	printf ("----------\n");
-	rotate_list(&head, argc - 2);
+	printf("------------\n");
+	// read_operations(&head);
+	// delete_node(&head, 3);
+	head = add_node(head, 9);
 	display_list(head);
+	
+	// printf ("----------\n");
+	// rotate_list(&head, argc - 2);
+	// display_list(head);
 }
