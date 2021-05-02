@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:03 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/02 12:55:40 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/02 14:56:29 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ int main(int argc, char **argv)
 	check_for_dup(head);
 	display_list(head);
 	printf("------------\n");
-	// read_operations(&head);
+	read_operations(&head);
 	// delete_node(&head, 3);
 	head = add_node(head, 9);
 	display_list(head);
