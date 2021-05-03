@@ -6,11 +6,11 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 10:57:53 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/15 12:11:07 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/03 15:15:29 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 static int		ft_free(char **s1, int ret)
 {

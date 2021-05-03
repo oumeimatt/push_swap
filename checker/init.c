@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/27 12:29:31 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/03 15:16:01 by oel-yous         ###   ########.fr       */
+/*   Created: 2021/05/03 14:33:39 by oel-yous          #+#    #+#             */
+/*   Updated: 2021/05/03 15:27:10 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int     is_sorted(t_args *head)
+void    init_all(t_stack *stack)
 {
-    t_args *list;
-
-    if (head == NULL)
-        return (TRUE);
-    if (head != NULL && head->next == NULL)
-        write(1, "****\n", 5);
-    list = head;
-    while (list->next != NULL)
-    {
-        if (list->data > list->next->data)
-            return (FALSE);
-        list = list->next;
-    }
-    return (TRUE);
+    if (!(stack = (t_stack *)malloc(sizeof(t_stack))))
+        ft_error();
+    stack->stack_a = NULL;
+    stack->stack_b = NULL;
+    stack->line = NULL;
+    stack->str = NULL;
+    stack->stack_size = 0;
 }
-

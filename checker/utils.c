@@ -6,11 +6,11 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 12:59:41 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/27 13:47:59 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/03 15:35:35 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -62,7 +62,15 @@ int		ft_atoi(char *str)
         signe = -1;
         i = 1;
     }
-    r = 0;
+	r = norme_atoi(str, i, signe);
+	return (r * signe);
+}
+
+long	norme_atoi(char *str, int i, int signe)
+{
+	long r;
+
+	r = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] < 48 || str[i] > 57) 
@@ -70,11 +78,11 @@ int		ft_atoi(char *str)
 	    else
 	    {
 	    	r = r * 10 + str[i] - '0';
-	    	if ((r > 2147483648 && signe == -1) || (r > 2147483647 && signe == 1))
+	    	if ((r > 2147483648 && signe == -1) ||
+			(r > 2147483647 && signe == 1))
 	    		ft_error();
 	    }
         i++;
     }
-	r = r * signe;
 	return (r);
 }

@@ -6,11 +6,11 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/28 10:35:55 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/04/15 12:11:21 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/03 14:36:02 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 size_t	ft_strlen(const char *str)
 {
