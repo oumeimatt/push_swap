@@ -14,9 +14,9 @@ NAME = checker
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror 
 
-SRCS = checker.c utils.c get_next_line.c get_next_line_utils.c operations.c sort.c init.c
+SRCS = checker.c utils.c get_next_line.c get_next_line_utils.c operations.c sort.c init.c push_swap_free.c
 
 OBJS = $(SRCS:.c=.o)
 

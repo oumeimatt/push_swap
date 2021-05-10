@@ -20,56 +20,57 @@
 
 # define TRUE 0
 # define FALSE 1
-typedef	struct	s_args
+typedef	struct	s_stack
 {
 	int	data;
-	struct s_args* next;
-}				t_args;
+	struct s_stack* next;
+}				t_stack;
 
-typedef struct	s_stack
+
+typedef struct	s_all
 {
-	t_args	*stack_a;
-	t_args	*stack_b;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
 	char	*line;
 	char	*str;
 	int		stack_size;
-}				t_stack;
+}				t_all;
 
 #define BUFFER_SIZE 1000
 
 
 //checker.c
 void	ft_error();
-void	check_for_dup(t_args *head);
+void	check_for_dup(t_stack *head);
 int		valid_instructions_1(char *line);
 int		valid_instructions_2(char *line);
 void	incorrect_instruc(char *line);
-t_args	*store_data(int argc, char **argv, t_args **head);
-void	check_for_dup(t_args *temp);
-void	read_operations(t_args **args);
+void	store_data(int argc, char **argv, t_all *all);
+void	check_for_dup(t_stack *temp);
+void	read_operations(t_all *all);
 int 	main(int argc, char **argv);
-void display_list(t_args *head);
+void display_list(t_stack *head);
 
 //utils.c
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(char *str);
 long	norme_atoi(char *str, int i, int signe);
-
+void	fill_stack(t_all *all, char s_name, int data);
 //operations.c
-void    swap_oper(t_args **args);
-void    swap_function(t_args **args, char *line);
-void    exec_instructions(t_args *args, char *line);
-void	remove_first(t_args **head);
-t_args *add_node(t_args *head, int data);
-void    rotate_list(t_args **head_ref, int k);
-void	delete_node(t_args **head_ref, int position);
-void    push_to_other_stack(t_args *from, t_args *to);
+void    swap_oper(t_stack **stack);
+void    swap_function(t_stack **stack, char *line);
+t_stack	*exec_instructions(t_all *all, char *line);
+void	remove_first(t_stack **head);
+t_stack *add_node(t_stack *head, int data);
+void    rotate_list(t_stack **head_ref, int k);
+void	delete_node(t_stack **head_ref, int position);
+void    push_to_other_stack(t_stack *from, t_stack *to);
 // sort.c
-int     is_sorted(t_args *head);
+int     is_sorted(t_stack *head);
 
 //init.c
-void    init_all(t_stack *stack);
+t_all    *init_all(t_all *all);
 
 // get_next_line
 size_t	ft_strlen(const char *str);
@@ -78,4 +79,9 @@ char	*ft_strdup(const char *s1);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		get_next_line(int fd, char **line);
+
+// push_swap_free.c
+void		free_stack(t_stack *stack);
+void		free_all(t_all *all);
+void	ft_error2(t_all *all);
 #endif

@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-int     is_sorted(t_args *head)
+int     is_sorted(t_stack *head)
 {
-    t_args *list;
+    t_stack *list;
 
     if (head == NULL)
         return (TRUE);

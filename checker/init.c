@@ -10,15 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void    init_all(t_stack *stack)
+t_all    *init_all(t_all *all)
 {
-    if (!(stack = (t_stack *)malloc(sizeof(t_stack))))
-        ft_error();
-    stack->stack_a = NULL;
-    stack->stack_b = NULL;
-    stack->line = NULL;
-    stack->str = NULL;
-    stack->stack_size = 0;
+    if (!(all = (t_all *)malloc(sizeof(t_all))))
+        exit(1);
+    all->stack_a = NULL;
+    all->stack_b = NULL;
+    all->line = NULL;
+    all->str = NULL;
+    all->stack_size = 0;
+    return(all);
 }

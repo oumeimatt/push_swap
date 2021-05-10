@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int		valid_instructions_1(char *line)
 {
@@ -48,11 +48,6 @@ int		valid_instructions_2(char *line)
 		return (FALSE);
 }
 
-void	ft_error()
-{
-	write(1, "Error\n", 6);
-	exit (0);
-}
 
 void	incorrect_instruc(char *line)
 {
@@ -67,59 +62,54 @@ void	incorrect_instruc(char *line)
 		ft_error();
 }
 
-void	read_operations(t_args **args)
+void	read_operations(t_all *all)
 {
 	int ret;
 	char *line;
-	t_args *list;
-	// t_stack *stack;
-	
+	t_stack *list;
 
-	list = *args;
 	while ((ret = get_next_line(0, &line))> 0)
 	{
 		if (line[0] == '\0')
 			break;
 		incorrect_instruc(line);
-		exec_instructions(list, line);
-		printf("****************\n");
-		display_list(list);
-		printf("****************\n");
-
+		all->stack_a = exec_instructions(all, line);
+		// printf("****************\n");
+		// display_list(list);
+		// printf("****************\n");
 	}
-	// printf("----------------\n");
+	list = all->stack_a;
+	printf("=======-\nstack->a\n");
+	display_list(all->stack_a);
+	printf("end of stack->a\n=======\n");
 	// display_list(list);
+	printf("------\nstack->b \n");
+	display_list(all->stack_b);
+	printf("end of stack->b\n-------\n");
 	if (is_sorted(list) == TRUE)
 		write(1,"OK\n", 3);
 	else
 		write(1, "KO\n", 3);
 }
 
-t_args *store_data(int argc, char **argv, t_args **head)
+void store_data(int argc, char **argv, t_all *all)
 {
 	int i;
-	t_args* args;
-	// t_stack *stack;
+	int data;
 
-	i = argc -1;
+	i = argc - 1;
 	while (i > 0)
 	{
-		args = (t_args*) malloc(sizeof(t_args));
-		// args = stack->stack_a;
-		args->data = ft_atoi(argv[i]);
-		// printf("args->data == %s\n", args->data);
-		// printf("stack->stack_a->data == %s\n", stack->stack_a->data);
-    	args->next = (*head);
-    	(*head) = args;
+		data = ft_atoi(argv[i]);
+		fill_stack(all, 'a', data);
 		i--;
 	}
-	return (args);
 }
 
-void	check_for_dup(t_args *temp)
+void	check_for_dup(t_stack *temp)
 {
-	t_args *temp1;
-	t_args *temp2;
+	t_stack *temp1;
+	t_stack *temp2;
 
 	temp1 = temp;
 	while (temp1 != NULL && temp1->next != NULL)
@@ -136,10 +126,9 @@ void	check_for_dup(t_args *temp)
 	}	
 }
 
-void display_list(t_args *head)
+void display_list(t_stack *head)
 {
-	t_args *current = head;
-
+	t_stack *current = head;
     while (current != NULL)
     {
         printf("%d\n" , current->data);
@@ -150,7 +139,9 @@ void display_list(t_args *head)
 int main(int argc, char **argv)
 {
 	int i;
-	t_args *head;
+	// t_stack *head;
+	t_all *all;
+
 	i = 1;
 	if (argc == 1)
 		exit (0);
@@ -162,11 +153,12 @@ int main(int argc, char **argv)
 			i++;
 		}
 	}
-	head = store_data(argc, argv, &head);
-	check_for_dup(head);
-	display_list(head);
-	// printf("------------\n");
-	read_operations(&head);
+	all = init_all(all);
+	store_data(argc, argv, all);
+	check_for_dup(all->stack_a);
+	display_list(all->stack_a);
+	printf("------------\n");
+	read_operations(all);
 	// delete_node(&head, 3);
 	// head = add_node(head, 9);
 	// display_list(head);
@@ -174,4 +166,30 @@ int main(int argc, char **argv)
 	// printf ("----------\n");
 	// rotate_list(&head, argc - 2);
 	// display_list(head);
+}
+
+void	fill_stack(t_all *all, char s_name, int data)
+{
+	t_stack **top;
+	t_stack *temp;
+
+	if (s_name == 'a')
+		top = &all->stack_a;
+	else if (s_name == 'b')
+		top = &all->stack_b;
+	if (*top)
+	{
+		if (!(temp = (t_stack *)malloc(sizeof(t_stack))))
+			ft_error2(all);
+		temp->next = *top;
+		(*top) = temp;
+		temp->data = data;
+	}
+	else
+	{
+		if (!(*top = (t_stack *)malloc(sizeof(t_stack))))
+			ft_error2(all);
+		(*top)->next = NULL;	
+		(*top)->data = data;
+	}
 }
