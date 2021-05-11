@@ -62,7 +62,7 @@ void	incorrect_instruc(char *line)
 		ft_error();
 }
 
-void	read_operations(t_all *all)
+void	read_operations(t_all *all, int argc)
 {
 	int ret;
 	char *line;
@@ -73,23 +73,20 @@ void	read_operations(t_all *all)
 		if (line[0] == '\0')
 			break;
 		incorrect_instruc(line);
-		all->stack_a = exec_instructions(all, line);
-		// printf("****************\n");
-		// display_list(list);
-		// printf("****************\n");
+		all->stack_b = exec_instructions(all, line, argc);
 	}
-	list = all->stack_a;
+	// list = all->stack_a;
 	printf("=======-\nstack->a\n");
-	display_list(all->stack_a);
+	display_list(all->stack_b);
 	printf("end of stack->a\n=======\n");
 	// display_list(list);
-	printf("------\nstack->b \n");
-	display_list(all->stack_b);
-	printf("end of stack->b\n-------\n");
-	if (is_sorted(list) == TRUE)
-		write(1,"OK\n", 3);
-	else
-		write(1, "KO\n", 3);
+	// printf("------\nstack->b \n");
+	// display_list(all->stack_b);
+	// printf("end of stack->b\n-------\n");
+	// if (is_sorted(list) == TRUE)
+	// 	write(1,"OK\n", 3);
+	// else
+	// 	write(1, "KO\n", 3);
 }
 
 void store_data(int argc, char **argv, t_all *all)
@@ -158,7 +155,7 @@ int main(int argc, char **argv)
 	check_for_dup(all->stack_a);
 	display_list(all->stack_a);
 	printf("------------\n");
-	read_operations(all);
+	read_operations(all, argc);
 	// delete_node(&head, 3);
 	// head = add_node(head, 9);
 	// display_list(head);

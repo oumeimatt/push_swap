@@ -45,41 +45,15 @@ void    swap_oper(t_stack **head)
 //         swap_oper(&all->stack_b);
 //     }
 // }
-// void    help_swap(t_stack **head, char *line)
-// {
-//     t_stack *list;
-//     t_stack *stack;
-//     list = *head;
-//     swap_oper(head);
-//     // if (line[1] == 'a')
-//     // {
-//     //     stack->stack_a = *head;
-//     //     // if (stack->stack_a == NULL)
-//     //     // {
-//     //     //     write(1, "4444\n", 5);
-//     //     //     return ;
-//     //     // }
-//     //     // printf("list == --> %s\n", list->data);
-//     //     // printf("list->next->data == --> %s\n", list->next->data);
-//     //     while (list->next != NULL)
-//     //     {
-//     //         list = (*head);
-//     //         // stack->stack_a->data = list->data;
-//     //         // printf("stack->stack_a->data == %s\n", stack->stack_a->data);
-//     //         (*head) = list->next;
-			
-//     //     }
-//     // }
-// }
 
-t_stack    *exec_instructions(t_all *all, char *line)
+t_stack    *exec_instructions(t_all *all, char *line, int argc)
 {
 	t_stack *list_a;
 	t_stack *list_b;
 
 	list_a = all->stack_a;
 	list_b = all->stack_b;
-	if (line[0] == 'r')
+	if (line[0] == 'r' && ft_strlen(line) == 2)
 	{
 		if (line[1] == 'a')
 			rotate_list(&list_a, 1);
@@ -91,19 +65,51 @@ t_stack    *exec_instructions(t_all *all, char *line)
 			rotate_list(&list_b, 1);
 		}
 	}
-	// return (list_a);
-	// if (line[0] == 's')
-	// {
-	//     // swap_oper(&stack);
-	//     swap_function(&stack, line);
-	// }
-	   //swap_function "swap top two numbers";
+	
+	if (line[0] == 's')
+	{
+		if (line[1] == 'a')
+	    	swap_oper(&list_a);
+		if (line[1] == 'b')
+			swap_oper(&list_b);
+		if (line[1] == 's')
+		{
+			swap_oper(&list_a);
+			swap_oper(&list_b);
+		}
+	}
+	if (line[0] == 'r' && ft_strlen(line) == 3)
+	{
+		if (line[2] == 'a')
+			rotate_list(&list_a,  argc - 2);
+		if (line[2] == 'b')
+			rotate_list(&list_b,  argc - 2);
+		if (line[2] == 'r')
+		{
+			rotate_list(&list_a,  argc - 2);
+			rotate_list(&list_b,  argc - 2);
+
+		}
+	}
+	if (line[0] == 'p')
+	{
+		if (line[1] == 'b')
+		{
+			push_to_other_stack(&list_a, &list_b);
+			delete_node(&list_a);
+			printf(">>>>>>>>\n");
+			display_list(list_a);
+			printf(">>>>>>>>\n");
+		}
+		else
+		{
+			push_to_other_stack(&list_b, &list_a);
+			delete_node(&list_b);
+		}
+
+	}
 //     if (line[0] == 'p')
 //         // push_function "send top of * to top of *";
-//     if (line[0] == 'r' && ft_strlen(line) == 2)
-//         // rotate function "top goes to bottom"
-//     if (line[0] == 'r' && ft_strlen(line) == 3)
-//         // rotate_2_function "bottom goes to top"
 	return (list_a);
 }
 void    rotate_list(t_stack **head_ref, int k)
@@ -131,24 +137,33 @@ void    rotate_list(t_stack **head_ref, int k)
 	kth_node->next = NULL;
 }
 
-void    push_to_other_stack(t_stack *from, t_stack *to)
+void    push_to_other_stack(t_stack **from, t_stack **to)
 {
 	t_stack *save;
 	t_stack *stock;
 
 	if (!from)
 		return;
-	save = from;
-	delete_node(&from, 0);
-	if (!to)
+	save = *from;
+	if (*to)
 	{
-		to = save;
-		to->next = NULL;
+		write(1,"###\n", 4);
+		(*to) = add_node(*to, save->data);
+		display_list(*to);
 	}
-	else
+	if (!(*to))
 	{
-		to = add_node(to, save->data);
+		// (*to) = add_node(*to, save->data);
+		(*to) = save;
+		(*to)->next = NULL;
+		// printf("00000000000\n");
+		// display_list(*to);
+		// printf("00000000000\n");
 	}
+	printf("$$$$$$\n");
+	display_list(*to);
+	printf("$$$$$$\n");
+	// delete_node(from, 0);
 }
 
 t_stack *add_node(t_stack *head, int data)
@@ -159,30 +174,45 @@ t_stack *add_node(t_stack *head, int data)
 	node->next = head;
 	return (node);
 }
-void    delete_node(t_stack **head_ref, int position)
+void    delete_node(t_stack **head_ref)
 {
-	t_stack  *temp;
-	int i;
-	t_stack  *next;
+// 	t_stack  *temp;
+// 	int i;
+// 	t_stack  *next;
 
-   if (*head_ref == NULL)
-	  return;
-   temp = *head_ref;
-	if (position == 0)
-	{
-		*head_ref = temp->next;
-		free(temp);
-		return;
-	}
-	i = 0;
-	while (temp != NULL && i < position - 1)
-	{
-		 temp = temp->next;
-		 i++;
-	}
-	if (temp == NULL || temp->next == NULL)
-		 return;
-	next = temp->next->next;
-	free(temp->next);
-	temp->next = next;
+//    if (*head_ref == NULL)
+// 	  return;
+//    temp = *head_ref;
+// 	if (position == 0)
+// 	{
+// 		*head_ref = temp->next;
+// 		free(temp);
+// 		return;
+// 	}
+// 	i = 0;
+// 	while (temp != NULL && i < position - 1)
+// 	{
+// 		 temp = temp->next;
+// 		 i++;
+// 	}
+// 	if (temp == NULL || temp->next == NULL)
+// 		 return;
+// 	next = temp->next->next;
+// 	free(temp->next);
+// 	temp->next = next;
+//   t_stack *tmp;
+
+//   /*Linked list does not exist or the list is empty*/
+//   if(head_ref == NULL || *head_ref == NULL) return;
+  
+//   /*Storing the head to a temporary variable*/
+//   tmp = *head_ref;
+  
+//   /*Moving head to the next node*/
+//   *head_ref = (*head_ref)->next;
+  
+//   /*Deleting the first node*/
+//   free(tmp);
+
+
 }

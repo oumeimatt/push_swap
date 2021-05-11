@@ -47,7 +47,7 @@ int		valid_instructions_2(char *line);
 void	incorrect_instruc(char *line);
 void	store_data(int argc, char **argv, t_all *all);
 void	check_for_dup(t_stack *temp);
-void	read_operations(t_all *all);
+void	read_operations(t_all *all, int argc);
 int 	main(int argc, char **argv);
 void display_list(t_stack *head);
 
@@ -60,12 +60,12 @@ void	fill_stack(t_all *all, char s_name, int data);
 //operations.c
 void    swap_oper(t_stack **stack);
 void    swap_function(t_stack **stack, char *line);
-t_stack	*exec_instructions(t_all *all, char *line);
+t_stack	*exec_instructions(t_all *all, char *line, int argc);
 void	remove_first(t_stack **head);
 t_stack *add_node(t_stack *head, int data);
 void    rotate_list(t_stack **head_ref, int k);
-void	delete_node(t_stack **head_ref, int position);
-void    push_to_other_stack(t_stack *from, t_stack *to);
+void	delete_node(t_stack **head_ref);
+void    push_to_other_stack(t_stack **from, t_stack **to);
 // sort.c
 int     is_sorted(t_stack *head);
 
