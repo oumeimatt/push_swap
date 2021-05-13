@@ -73,20 +73,21 @@ void	read_operations(t_all *all, int argc)
 		if (line[0] == '\0')
 			break;
 		incorrect_instruc(line);
-		all->stack_b = exec_instructions(all, line, argc);
+		// all->stack_a = exec_instructions(all, line, argc);
+		exec_instructions(all, line, argc);
 	}
-	// list = all->stack_a;
+	list = all->stack_a;
 	printf("=======-\nstack->a\n");
-	display_list(all->stack_b);
+	display_list(list);
 	printf("end of stack->a\n=======\n");
 	// display_list(list);
-	// printf("------\nstack->b \n");
-	// display_list(all->stack_b);
-	// printf("end of stack->b\n-------\n");
-	// if (is_sorted(list) == TRUE)
-	// 	write(1,"OK\n", 3);
-	// else
-	// 	write(1, "KO\n", 3);
+	printf("------\nstack->b \n");
+	display_list(all->stack_b);
+	printf("end of stack->b\n-------\n");
+	if (is_sorted(list) == TRUE && all->stack_b == NULL)
+		write(1,"OK\n", 3);
+	else
+		write(1, "KO\n", 3);
 }
 
 void store_data(int argc, char **argv, t_all *all)
@@ -151,6 +152,7 @@ int main(int argc, char **argv)
 		}
 	}
 	all = init_all(all);
+	// init_all(&all);
 	store_data(argc, argv, all);
 	check_for_dup(all->stack_a);
 	display_list(all->stack_a);

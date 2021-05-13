@@ -59,13 +59,16 @@ long	norme_atoi(char *str, int i, int signe);
 void	fill_stack(t_all *all, char s_name, int data);
 //operations.c
 void    swap_oper(t_stack **stack);
-void    swap_function(t_stack **stack, char *line);
-t_stack	*exec_instructions(t_all *all, char *line, int argc);
+void    swap_function(t_all *all, char *line);
+void    rotate_function(t_all *all, char *line);
+void    rev_rotate_function(t_all *all, char *line, int argc);
+// t_stack	*exec_instructions(t_all *all, char *line, int argc);
+void	exec_instructions(t_all *all, char *line, int argc);
 void	remove_first(t_stack **head);
-t_stack *add_node(t_stack *head, int data);
 void    rotate_list(t_stack **head_ref, int k);
 void	delete_node(t_stack **head_ref);
 void    push_to_other_stack(t_stack **from, t_stack **to);
+void ft_add_node(t_stack **list, int val);
 // sort.c
 int     is_sorted(t_stack *head);
 
