@@ -26,10 +26,6 @@ void		free_all(t_all *all)
 			free_stack(all->stack_a);
 		if (all->stack_b)
 			free_stack(all->stack_b);
-		if (all->line)
-			free(all->line);
-		if (all->str)
-			free(all->str);
 		free(all);
 	}
 }

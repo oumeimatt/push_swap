@@ -26,7 +26,6 @@ void    swap_oper(t_stack **head)
 		list->data = list->next->data;
 		list->next->data = temp;
 	}
-		//    write(1, "----\n", 6);
 }
 
 void    swap_function(t_all *all, char *line)
@@ -50,61 +49,77 @@ void    swap_function(t_all *all, char *line)
     }
 }
 
-void    rotate_function(t_all *all, char *line)
+t_stack*    rotate_function(t_all *all, char c)
 {
 	t_stack *list_a;
 	t_stack *list_b;
 
 	list_a = all->stack_a;
 	list_b = all->stack_b;
-    if (line[1] == 'a')
+    if (c == 'a')
     {
         rotate_list(&list_a, 1);
-        // display_list(list_a);
+		return (list_a);
     }
-    if (line[1] == 'b')
+    if (c == 'b')
+	{
         rotate_list(&list_b, 1);
-    if (line[1] == 'r')
-    {
-        rotate_list(&list_a, 1);
-        rotate_list(&list_b, 1);
-    }
+		return(list_b);
+	}
 }
 
-void    rev_rotate_function(t_all *all, char *line, int argc)
+t_stack*    rev_rotate_function(t_all *all, char c)
 {
 	t_stack *list_a;
 	t_stack *list_b;
+	int count;
 
 	list_a = all->stack_a;
 	list_b = all->stack_b;
-    if (line[1] == 'a')
+    if (c == 'a')
     {
-        rotate_list(&list_a, argc - 2);
-        // display_list(list_a);
+		count = count_list(list_a);
+        rotate_list(&list_a, count - 1);
+		return(list_a);
     }
-    if (line[1] == 'b')
-        rotate_list(&list_b, argc - 2);
-    if (line[1] == 'r')
-    {
-        rotate_list(&list_a, argc - 2);
-        rotate_list(&list_b, argc - 2);
-    }
+    if (c == 'b')
+	{
+		count = count_list(list_b);
+        rotate_list(&list_b, count - 1);
+		return(list_b);
+	}
 }
-// t_stack    *exec_instructions(t_all *all, char *line, int argc)
-void	exec_instructions(t_all *all, char *line, int argc)
-{
-	// t_stack *list_a;
-	// t_stack *list_b;
 
-	// list_a = all->stack_a;
-	// list_b = all->stack_b;
+void	exec_instructions(t_all *all, char *line)
+{
 	if (line[0] == 'r' && ft_strlen(line) == 2)
-		rotate_function(all, line);	
+	{
+		if (line[1] == 'a')
+			all->stack_a = rotate_function(all, 'a');
+		if (line[1] == 'b')
+		{
+			all->stack_b = rotate_function(all, 'b');
+		}
+		if (line[1] == 'r')
+		{
+			all->stack_a = rotate_function(all, 'a');
+			all->stack_b = rotate_function(all, 'b');
+		}
+	}
 	if (line[0] == 's')
 		swap_function(all, line);
 	if (line[0] == 'r' && ft_strlen(line) == 3)
-		rev_rotate_function(all, line, argc);
+	{
+		if (line[1] == 'a')
+			all->stack_a = rev_rotate_function(all, 'a');
+		if (line[1] == 'b')
+			all->stack_b = rev_rotate_function(all, 'b');
+		if (line[1] == 'r')
+		{
+			all->stack_a = rev_rotate_function(all, 'a');
+			all->stack_b = rev_rotate_function(all, 'b');
+		}
+	}
 	if (line[0] == 'p')
 	{
 		if (line[1] == 'b')
@@ -114,14 +129,12 @@ void	exec_instructions(t_all *all, char *line, int argc)
 
 	}
 }
-void    rotate_list(t_stack **head_ref, int k)
+void	rotate_list(t_stack **head_ref, int k)
 {
 	t_stack *current;
 	t_stack *kth_node;
 	int count;
 	
-	if (k == 0)
-		return;
 	current = *head_ref;
 	count = 1;
 	while (count < k && current != NULL)
@@ -137,6 +150,7 @@ void    rotate_list(t_stack **head_ref, int k)
 	current->next = *head_ref;
 	*head_ref = kth_node->next;
 	kth_node->next = NULL;
+	// return (current);
 }
 
 void	push_to_other_stack(t_stack **from, t_stack **to)
@@ -150,7 +164,6 @@ void	push_to_other_stack(t_stack **from, t_stack **to)
 	ft_add_node(to, save->data);
 	delete_node(from);
 }
-
 
 void ft_add_node(t_stack **list, int val)
 {

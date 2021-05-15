@@ -62,7 +62,7 @@ void	incorrect_instruc(char *line)
 		ft_error();
 }
 
-void	read_operations(t_all *all, int argc)
+void	read_operations(t_all *all)
 {
 	int ret;
 	char *line;
@@ -73,21 +73,24 @@ void	read_operations(t_all *all, int argc)
 		if (line[0] == '\0')
 			break;
 		incorrect_instruc(line);
-		// all->stack_a = exec_instructions(all, line, argc);
-		exec_instructions(all, line, argc);
+		exec_instructions(all, line);
+		free(line);
 	}
-	list = all->stack_a;
-	printf("=======-\nstack->a\n");
-	display_list(list);
-	printf("end of stack->a\n=======\n");
-	// display_list(list);
-	printf("------\nstack->b \n");
-	display_list(all->stack_b);
-	printf("end of stack->b\n-------\n");
-	if (is_sorted(list) == TRUE && all->stack_b == NULL)
+	free(line);
+	printf("*****\n");
+	display_list(all->stack_a);
+	printf("*****\n");
+	if (is_sorted(all->stack_a) == TRUE && all->stack_b == NULL)
+	{
+		free(all->stack_a);
 		write(1,"OK\n", 3);
+	}
 	else
+	{
+		free(all->stack_a);
+		free(all->stack_b);
 		write(1, "KO\n", 3);
+	}
 }
 
 void store_data(int argc, char **argv, t_all *all)
@@ -124,7 +127,7 @@ void	check_for_dup(t_stack *temp)
 	}	
 }
 
-void display_list(t_stack *head)
+void	display_list(t_stack *head)
 {
 	t_stack *current = head;
     while (current != NULL)
@@ -134,10 +137,20 @@ void display_list(t_stack *head)
     }
 }
 
+int	count_list(t_stack *head)
+{
+	t_stack *current = head;
+	int i = 0;
+    while (current != NULL)
+    {
+		i++;
+        current = current->next;
+    }
+	return (i);
+}
 int main(int argc, char **argv)
 {
 	int i;
-	// t_stack *head;
 	t_all *all;
 
 	i = 1;
@@ -152,19 +165,11 @@ int main(int argc, char **argv)
 		}
 	}
 	all = init_all(all);
-	// init_all(&all);
 	store_data(argc, argv, all);
 	check_for_dup(all->stack_a);
-	display_list(all->stack_a);
-	printf("------------\n");
-	read_operations(all, argc);
-	// delete_node(&head, 3);
-	// head = add_node(head, 9);
-	// display_list(head);
-	
-	// printf ("----------\n");
-	// rotate_list(&head, argc - 2);
-	// display_list(head);
+	read_operations(all);
+	free(all);
+
 }
 
 void	fill_stack(t_all *all, char s_name, int data)
@@ -188,7 +193,7 @@ void	fill_stack(t_all *all, char s_name, int data)
 	{
 		if (!(*top = (t_stack *)malloc(sizeof(t_stack))))
 			ft_error2(all);
-		(*top)->next = NULL;	
+		(*top)->next = NULL;
 		(*top)->data = data;
 	}
 }

@@ -31,9 +31,6 @@ typedef struct	s_all
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	char	*line;
-	char	*str;
-	int		stack_size;
 }				t_all;
 
 #define BUFFER_SIZE 1000
@@ -47,9 +44,10 @@ int		valid_instructions_2(char *line);
 void	incorrect_instruc(char *line);
 void	store_data(int argc, char **argv, t_all *all);
 void	check_for_dup(t_stack *temp);
-void	read_operations(t_all *all, int argc);
+void	read_operations(t_all *all);
 int 	main(int argc, char **argv);
-void display_list(t_stack *head);
+void	display_list(t_stack *head);
+int	count_list(t_stack *head);
 
 //utils.c
 int		ft_strcmp(char *s1, char *s2);
@@ -60,12 +58,11 @@ void	fill_stack(t_all *all, char s_name, int data);
 //operations.c
 void    swap_oper(t_stack **stack);
 void    swap_function(t_all *all, char *line);
-void    rotate_function(t_all *all, char *line);
-void    rev_rotate_function(t_all *all, char *line, int argc);
-// t_stack	*exec_instructions(t_all *all, char *line, int argc);
-void	exec_instructions(t_all *all, char *line, int argc);
+t_stack    *rotate_function(t_all *all, char c);
+t_stack    *rev_rotate_function(t_all *all, char c);
+void	exec_instructions(t_all *all, char *line);
 void	remove_first(t_stack **head);
-void    rotate_list(t_stack **head_ref, int k);
+void	rotate_list(t_stack **head_ref, int k);
 void	delete_node(t_stack **head_ref);
 void    push_to_other_stack(t_stack **from, t_stack **to);
 void ft_add_node(t_stack **list, int val);

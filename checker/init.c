@@ -18,8 +18,5 @@ t_all    *init_all(t_all *all)
         exit(1);
     all->stack_a = NULL;
     all->stack_b = NULL;
-    all->line = NULL;
-    all->str = NULL;
-    all->stack_size = 0;
     return(all);
 }
