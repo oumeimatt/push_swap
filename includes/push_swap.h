@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:00 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/18 09:07:23 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/18 16:01:51 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,11 @@ int		get_next_line(int fd, char **line);
 void		free_stack(t_stack *stack);
 void		free_all(t_all *all);
 void	ft_error2(t_all *all);
+
+
+
+// PUSH_SWAP
+void	sort_3_numbers(t_all *all, char c);
+int		main(int argc, char **argv);
+void	sort_5_numbers(t_all *all);
 #endif
