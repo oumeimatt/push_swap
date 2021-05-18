@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 12:59:41 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/03 15:35:35 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/18 09:06:52 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,16 @@ long	norme_atoi(char *str, int i, int signe)
         i++;
     }
 	return (r);
+}
+
+int	count_list(t_stack *head)
+{
+	t_stack *current = head;
+	int i = 0;
+    while (current != NULL)
+    {
+		i++;
+        current = current->next;
+    }
+	return (i);
 }

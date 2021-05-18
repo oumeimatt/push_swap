@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:00 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/03 15:33:57 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/18 09:07:23 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(char *str);
 long	norme_atoi(char *str, int i, int signe);
-void	fill_stack(t_all *all, char s_name, int data);
+void	fill_stack(t_all *all, int data);
 //operations.c
-void    swap_oper(t_stack **stack);
+void    swap_list(t_stack **stack);
 void    swap_function(t_all *all, char *line);
 t_stack    *rotate_function(t_all *all, char c);
 t_stack    *rev_rotate_function(t_all *all, char c);
