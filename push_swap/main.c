@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:43:29 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/18 16:02:44 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/19 15:09:55 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int main(int argc, char **argv)
     printf("---------\n");
     display_list(all->stack_a);
     printf("---------\n");
-    printf("==========\n");
-    display_list(all->stack_b);
-    printf("==========\n");
+    // printf("==========\n");
+    // display_list(all->stack_b);
+    // printf("==========\n");
 }

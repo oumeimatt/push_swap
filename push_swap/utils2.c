@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 08:55:40 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/18 09:34:52 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/19 15:21:31 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ void	rotate_list(t_stack **head_ref, int k)
 	t_stack *current;
 	t_stack *kth_node;
 	int count;
-	
+
+	if (k == 0)
+		return;
 	current = *head_ref;
 	count = 1;
 	while (count < k && current != NULL)

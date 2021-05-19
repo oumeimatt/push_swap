@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:51:07 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/18 18:08:40 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/19 16:55:27 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,3 +46,23 @@ void	sort_3_numbers(t_all *all, char c)
 	}
 }
 
+void	sort_5_numbers(t_all *all)
+{
+	t_stack *list_b;
+
+	five_numbers(all);
+	four_numbers(all);
+	sort_3_numbers(all, 'a');
+	list_b = all->stack_b;
+	printf("list->data %d\n", list_b->data);
+	printf("list->next->data %d\n", list_b->next->data);
+	if (list_b->data < list_b->next->data)
+	{
+		printf("list->data %d\n", list_b->data);
+		printf("list->next->data %d\n", list_b->next->data);
+		exec_instructions(all, "sb");
+	}
+	exec_instructions(all, "pa");
+	exec_instructions(all, "pa");
+
+}

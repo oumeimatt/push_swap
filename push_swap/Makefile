@@ -6,7 +6,7 @@
 #    By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 12:45:46 by oel-yous          #+#    #+#              #
-#    Updated: 2021/05/18 12:46:34 by oel-yous         ###   ########.fr        #
+#    Updated: 2021/05/19 14:58:59 by oel-yous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c utils.c utils2.c operations.c sort.c init.c push_swap_free.c fill_stack.c read_instructions.c
+SRCS = main.c utils_sort.c utils.c utils2.c operations.c sort.c init.c push_swap_free.c fill_stack.c read_instructions.c
 
 OBJS = $(SRCS:.c=.o)
 
