@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:36:16 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/21 13:44:00 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/21 17:25:16 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,14 @@ int		largest_element(t_stack *list)
 	return (max);
 }
 
-int    find_min_position(t_stack *stack)
+int    find_value_position(t_stack *stack, int value)
 {
     int i;
-    int min;
 
-    min = smallest_element(stack);
     i = 1;
     while (stack != NULL)
     {
-        if (stack->data == min)
+        if (stack->data <= value)
             return (i);
         i++;
         stack = stack->next;
@@ -63,10 +61,12 @@ void	push_min_to_b(t_all *all)
 	t_stack	*list_a;
 	int	pos;
 	int	size;
+	int	min;
 
 	list_a = all->stack_a;
+	min = smallest_element(list_a);
 	size = count_list(list_a);
-	pos = find_min_position(list_a);
+	pos = find_value_position(list_a, min);
 	if (pos <= 2)
 	{
 		if (pos > 1)
@@ -94,8 +94,8 @@ void	push_min_to_b(t_all *all)
 			}
 		}
 		exec_instructions(all, "pb");
-		// printf("+++++++\n");
-		// display_list(all->stack_b);
-		// printf("+++++++\n");
 	}
+	printf("+++++++\n");
+	display_list(all->stack_b);
+	printf("+++++++\n");
 }
