@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:00 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/18 16:01:51 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/21 13:44:15 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,15 @@ void	ft_error2(t_all *all);
 void	sort_3_numbers(t_all *all, char c);
 int		main(int argc, char **argv);
 void	sort_5_numbers(t_all *all);
+t_stack    *swap(t_stack *a, t_stack *b);
+int 	smallest_element(t_stack *list);
+void    bubble_sort(t_stack **head);
+int    find_min_position(t_stack *stack);
+void    four_numbers(t_all *all);
+void    five_numbers(t_all *all);
+int	even_or_odd(int n);
+void	push_min_to_b(t_all *all);
+int		largest_element(t_stack *list);
+
+
 #endif

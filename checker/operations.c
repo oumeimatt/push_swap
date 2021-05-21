@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:59:25 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/18 09:06:02 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/21 12:52:48 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ void	exec_instructions(t_all *all, char *line)
 		swap_function(all, line);
 	if (line[0] == 'r' && ft_strlen(line) == 3)
 	{
-		if (line[1] == 'a')
+		if (line[2] == 'a')
 			all->stack_a = rev_rotate_function(all, 'a');
-		if (line[1] == 'b')
+		if (line[2] == 'b')
 			all->stack_b = rev_rotate_function(all, 'b');
-		if (line[1] == 'r')
+		if (line[2] == 'r')
 		{
 			all->stack_a = rev_rotate_function(all, 'a');
 			all->stack_b = rev_rotate_function(all, 'b');

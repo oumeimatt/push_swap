@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:36:16 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/19 16:56:44 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/21 13:44:00 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,27 @@ int 	smallest_element(t_stack *list)
 	int		min;
 	
 	min = list->data;
-	while(list != NULL)
+	while (list != NULL)
 	{
 		if (min > list->data)
 			min = list->data;
 		list = list->next;
 	}
 	return (min);
+}
+
+int		largest_element(t_stack *list)
+{
+	int	max;
+
+	max = list->data;
+	while (list != NULL)
+	{
+		if (max < list->data)
+			max = list->data;
+		list = list->next;
+	}
+	return (max);
 }
 
 int    find_min_position(t_stack *stack)
@@ -36,10 +50,7 @@ int    find_min_position(t_stack *stack)
     while (stack != NULL)
     {
         if (stack->data == min)
-        {
-            printf("data min == %d\n", stack->data);
             return (i);
-        }
         i++;
         stack = stack->next;
     }
@@ -47,62 +58,44 @@ int    find_min_position(t_stack *stack)
     
 }
 
-void    five_numbers(t_all *all)
+void	push_min_to_b(t_all *all)
 {
-    t_stack *list_a;
-    int		pos;
+	t_stack	*list_a;
+	int	pos;
+	int	size;
 
 	list_a = all->stack_a;
+	size = count_list(list_a);
 	pos = find_min_position(list_a);
-    if (pos == 1)
-		exec_instructions(all, "pb");
-	if (pos == 2)
+	if (pos <= 2)
 	{
-		exec_instructions(all, "sa");
+		if (pos > 1)
+			exec_instructions(all, "sa");
 		exec_instructions(all, "pb");
 	}
-	if (pos == 3)
+	else
 	{
-		exec_instructions(all, "ra");
-		exec_instructions(all, "ra");
+		if ((even_or_odd(size) == 1 && pos <= (size / 2) + 1) || 
+		(even_or_odd(size) == 0 && pos <= size / 2))
+		{
+			while (pos >= (size / 2))
+			{
+				exec_instructions(all, "ra");
+				pos--;
+			}
+		}
+		else if ((even_or_odd(size) == 1 && pos > (size / 2)) ||
+		(even_or_odd(size) == 0 && pos > (size / 2)))
+		{
+			while (pos <= size)
+			{
+				exec_instructions(all, "rra");
+				pos++;
+			}
+		}
 		exec_instructions(all, "pb");
-	}
-	if (pos == 4)
-	{
-		exec_instructions(all, "rra");
-		exec_instructions(all, "rra");
-		exec_instructions(all, "pb");
-	}
-	if (pos == 5)
-	{
-		exec_instructions(all, "rra");
-		exec_instructions(all, "pb");
-	}
-}
-
-void    four_numbers(t_all *all)
-{
-    t_stack *list_a;
-    int		pos;
-
-	list_a = all->stack_a;
-	pos = find_min_position(list_a);
-    if (pos == 1)
-		exec_instructions(all, "pb");
-	if (pos == 2)
-	{
-		exec_instructions(all, "sa");
-		exec_instructions(all, "pb");
-	}
-	if (pos == 3)
-	{
-		exec_instructions(all, "ra");
-		exec_instructions(all, "ra");
-		exec_instructions(all, "pb");
-	}
-	if (pos == 4)
-	{
-		exec_instructions(all, "rra");
-		exec_instructions(all, "pb");
+		// printf("+++++++\n");
+		// display_list(all->stack_b);
+		// printf("+++++++\n");
 	}
 }
