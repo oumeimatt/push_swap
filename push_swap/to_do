@@ -2,3 +2,34 @@ find min
 find max 
 find size 
 range = 25 
+
+start = min
+range = min + 25
+
+
+while (list->next != NULL)
+{
+    if (list->data < range)
+    {
+        pos = find_value_position(list, list->data);
+        push_min_to_b(all, pos);
+    }
+    list = list->next;
+}
+
+while (list_b->next != NULL)
+{
+    if (list_b->data > list_b->next->data)
+    {
+        if (list_b->data > list_a->data)
+            pa
+        else
+            rb
+            rb
+    }
+    else
+    {
+        sb;
+
+    }
+}

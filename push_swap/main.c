@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:43:29 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/21 17:25:28 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/22 17:41:00 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
     // if (argc == 6)
     //     sort_5_numbers(all);
     // if (argc > 6)
-        sort_function(all);
+        sort_function(all); 
     printf("---------\n");
     display_list(all->stack_a);
     printf("---------\n");
@@ -71,3 +71,7 @@ int main(int argc, char **argv)
     // display_list(all->stack_b);
     // printf("==========\n");
 }
+
+
+
+// python3 pyviz.py `ruby -e "puts (-200..200).to_a.shuffle.join(' ')"`

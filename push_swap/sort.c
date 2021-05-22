@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:51:07 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/21 18:03:59 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/22 19:44:27 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ void	sort_3_numbers(t_all *all)
 void	sort_5_numbers(t_all *all)
 {
 	t_stack *list_b;
+	int	min;
 
-	// five_numbers(all);
-	// four_numbers(all);
-	push_min_to_b(all);
-	push_min_to_b(all);
+	min = smallest_element(all->stack_a);
+	push_min_to_b(all, min);
+	min = smallest_element(all->stack_a);
+	push_min_to_b(all, min);
 	sort_3_numbers(all);
 	list_b = all->stack_b;
 	if (list_b->data < list_b->next->data)
@@ -67,14 +68,41 @@ void	sort_5_numbers(t_all *all)
 
 void	sort_function(t_all *all)
 {
-	t_stack *list;
+	t_stack *list_a;
+	int	min;
+	int	max;
+	int	start;
+	int	range;
+	int	pos;
 
-	list = all->stack_a;
-	while (list->next != NULL)
+	min = smallest_element(all->stack_a);
+	max = largest_element(all->stack_a);
+	printf("max === %d\n", max);
+	range = min + 10;
+	printf("range == %d\n", range);
+	while (range < max)
 	{
-		// exec_instructions(all, "pb");
-		list = list->next;
+		list_a = all->stack_a;
+		while (list_a->next != NULL)
+		{
+			if (list_a->data <= range)
+			{
+				push_min_to_b(all, list_a->data);
+			}
+			list_a = list_a->next;
+		}
+		printf("range == %d\n", range);
+		range += 10;
 	}
+	t_stack *list_b = all->stack_b;
+	while (list_b != NULL)
+	{
+		max = largest_element(all->stack_b);
+		push_min_to_a(all, max);
+		list_b = all->stack_b;
+	}
+	
+	
 	printf("===========\n");
 	display_list(all->stack_b);
 	printf("===========\n");
