@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:51:07 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/22 19:44:27 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/22 20:37:08 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,19 +80,19 @@ void	sort_function(t_all *all)
 	printf("max === %d\n", max);
 	range = min + 10;
 	printf("range == %d\n", range);
-	while (range < max)
+	while (range <= max)
 	{
 		list_a = all->stack_a;
-		while (list_a->next != NULL)
+		// min = smallest_element(list_a);
+		// range = min;
+		while (list_a != NULL)
 		{
 			if (list_a->data <= range)
-			{
 				push_min_to_b(all, list_a->data);
-			}
 			list_a = list_a->next;
 		}
-		printf("range == %d\n", range);
 		range += 10;
+		printf("range == %d\n", range);
 	}
 	t_stack *list_b = all->stack_b;
 	while (list_b != NULL)
