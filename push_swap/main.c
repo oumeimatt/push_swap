@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:43:29 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/23 13:13:18 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/23 14:43:07 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,16 @@ int main(int argc, char **argv)
 	all = init_all(all);
 	store_data(argc, argv, all);
 	check_for_dup(all->stack_a);
-    // if (argc == 4)
-    //     sort_3_numbers(all);
-    // if (argc == 6)
-    //     sort_5_numbers(all);
-    // if (argc > 6)
-        sort_function(all); 
-    if (is_sorted(all->stack_a) == 0)
-        write(1, "OK\n", 3);
+    if (argc == 4)
+        sort_3_numbers(all);
+    else if (argc == 5)
+        sort_4_numbers(all);
+    else if (argc == 6)
+        sort_5_numbers(all);
     else
-        write(1, "KO\n", 3);
-    // printf("---------\n");
-    // display_list(all->stack_a);
-    // printf("---------\n");
-    // printf("==========\n");
-    // display_list(all->stack_b);
-    // printf("==========\n");
+        sort_function(all);
+    check_leaks();
+    // free_all(all);
 }
 
 

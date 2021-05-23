@@ -6,19 +6,7 @@
 #    By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 12:45:46 by oel-yous          #+#    #+#              #
-#    Updated: 2021/05/19 14:58:59 by oel-yous         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/04/17 13:08:32 by oel-yous          #+#    #+#              #
-#    Updated: 2021/05/18 09:12:02 by oel-yous         ###   ########.fr        #
+#    Updated: 2021/05/23 14:35:51 by oel-yous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c utils_sort.c utils.c utils2.c operations.c sort.c init.c push_swap_free.c fill_stack.c read_instructions.c
+SRCS = main.c utils_sort.c utils.c utils2.c leacks_cheker_ex.c operations.c sort.c init.c push_swap_free.c fill_stack.c
 
 OBJS = $(SRCS:.c=.o)
 
