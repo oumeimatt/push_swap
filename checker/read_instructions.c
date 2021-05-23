@@ -6,26 +6,26 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 09:08:54 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/18 09:10:06 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/23 17:46:31 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		valid_instructions_1(char *line)
+int	valid_instructions_1(char *line)
 {
 	if (line[1] == '\0')
-		return(TRUE);
+		return (TRUE);
 	if (line[0] == 's')
 	{
 		if (ft_strncmp(line, "sa\0", 3) != 0 && ft_strncmp(line, "sb\0", 3) != 0
-		&& ft_strncmp(line, "ss\0", 3) != 0)
+			&& ft_strncmp(line, "ss\0", 3) != 0)
 			return (FALSE);
 	}
 	if (line[0] == 'r')
 	{
 		if (ft_strncmp(line, "ra\0", 3) != 0 && ft_strncmp(line, "rb\0", 3) != 0
-		&& ft_strncmp(line, "rr\0", 3) != 0)
+			&& ft_strncmp(line, "rr\0", 3) != 0)
 			return (FALSE);
 	}
 	if (line[0] == 'p')
@@ -36,7 +36,7 @@ int		valid_instructions_1(char *line)
 	return (TRUE);
 }
 
-int		valid_instructions_2(char *line)
+int	valid_instructions_2(char *line)
 {
 	if (line[0] == 'r' && line[1] == 'r')
 	{
@@ -51,26 +51,26 @@ int		valid_instructions_2(char *line)
 void	incorrect_instruc(char *line)
 {
 	int	len;
-	
+
 	len = ft_strlen(line);
-	if ((len == 2 && valid_instructions_1(line)) || 
-	(len == 3 && valid_instructions_2(line)))
-		ft_error();	
-	if (len < 2 || len > 3 ||
-	 (line[0] != 'r' && line[0] != 's' && line[0] != 'p'))
+	if ((len == 2 && valid_instructions_1(line))
+		|| (len == 3 && valid_instructions_2(line)))
+		ft_error();
+	if (len < 2 || len > 3
+		|| (line[0] != 'r' && line[0] != 's' && line[0] != 'p'))
 		ft_error();
 }
 
 void	read_operations(t_all *all)
 {
-	int ret;
-	char *line;
-	t_stack *list;
+	int		ret;
+	char	*line;
+	t_stack	*list;
 
-	while ((ret = get_next_line(0, &line))> 0)
+	while (get_next_line(0, &line) > 0)
 	{
 		if (line[0] == '\0')
-			break;
+			break ;
 		incorrect_instruc(line);
 		exec_instructions(all, line);
 		free(line);
@@ -79,7 +79,7 @@ void	read_operations(t_all *all)
 	if (is_sorted(all->stack_a) == TRUE && all->stack_b == NULL)
 	{
 		free(all->stack_a);
-		write(1,"OK\n", 3);
+		write(1, "OK\n", 3);
 	}
 	else
 	{
