@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:51:07 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/22 20:37:08 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/23 13:02:26 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,22 +77,19 @@ void	sort_function(t_all *all)
 
 	min = smallest_element(all->stack_a);
 	max = largest_element(all->stack_a);
-	printf("max === %d\n", max);
-	range = min + 10;
-	printf("range == %d\n", range);
-	while (range <= max)
+	range = min;
+	while (all->stack_a != NULL)
 	{
 		list_a = all->stack_a;
-		// min = smallest_element(list_a);
-		// range = min;
 		while (list_a != NULL)
 		{
 			if (list_a->data <= range)
+			{
 				push_min_to_b(all, list_a->data);
+			}
 			list_a = list_a->next;
 		}
-		range += 10;
-		printf("range == %d\n", range);
+		range += 30;
 	}
 	t_stack *list_b = all->stack_b;
 	while (list_b != NULL)
@@ -100,10 +97,8 @@ void	sort_function(t_all *all)
 		max = largest_element(all->stack_b);
 		push_min_to_a(all, max);
 		list_b = all->stack_b;
+		// printf("*********\n");
+		// display_list(all->stack_a);
+		// printf("*********\n");
 	}
-	
-	
-	printf("===========\n");
-	display_list(all->stack_b);
-	printf("===========\n");
 }

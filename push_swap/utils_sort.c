@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:36:16 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/22 19:43:59 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/22 21:37:47 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	push_min_to_b(t_all *all, int value)
 	list_a = all->stack_a;
 	size = count_list(list_a);
 	pos = find_value_position(all->stack_a, value);
-	printf("pos of value <%d> is ==== <%d>\n",value, pos);
 	if (pos <= 2)
 	{
 		if (pos > 1)
@@ -92,9 +91,6 @@ void	push_min_to_b(t_all *all, int value)
 		}
 		exec_instructions(all, "pb");
 	}
-	printf("+++++++\n");
-	display_list(all->stack_b);
-	printf("+++++++\n");
 }
 
 void	push_min_to_a(t_all *all, int value)
@@ -134,7 +130,4 @@ void	push_min_to_a(t_all *all, int value)
 		}
 		exec_instructions(all, "pa");
 	}
-	printf("+++++++\n");
-	display_list(all->stack_b);
-	printf("+++++++\n");
 }
