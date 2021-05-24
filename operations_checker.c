@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations_checker.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:59:25 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/23 18:26:52 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:07:38 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "includes/push_swap.h"
 
-void	swap_function(t_all *all, char *line)
+void	swap_function_check(t_all *all, char *line)
 {
 	t_stack	*list_a;
 	t_stack	*list_b;
@@ -20,24 +20,17 @@ void	swap_function(t_all *all, char *line)
 	list_a = all->stack_a;
 	list_b = all->stack_b;
 	if (line[1] == 'a')
-	{
-		write(1, "sa\n", 3);
 		swap_list(&list_a);
-	}
 	if (line[1] == 'b')
-	{
-		write(1, "sb\n", 3);
 		swap_list(&list_b);
-	}
 	if (line[1] == 's')
 	{
-		write(1, "ss\n", 3);
 		swap_list(&list_a);
 		swap_list(&list_b);
 	}
 }
 
-t_stack	*rotate_function(t_all *all, char c)
+t_stack	*rotate_function_check(t_all *all, char c)
 {
 	t_stack	*list_a;
 	t_stack	*list_b;
@@ -57,7 +50,7 @@ t_stack	*rotate_function(t_all *all, char c)
 	return (NULL);
 }
 
-t_stack	*rev_rotate_function(t_all *all, char c)
+t_stack	*rev_rotate_function_check(t_all *all, char c)
 {
 	t_stack	*list_a;
 	t_stack	*list_b;
@@ -80,14 +73,44 @@ t_stack	*rev_rotate_function(t_all *all, char c)
 	return (NULL);
 }
 
-void	exec_instructions(t_all *all, char *line)
+void	exec_instructions_check(t_all *all, char *line)
 {
 	if (line[0] == 'r' && ft_strlen(line) == 2)
-		apply_rotate(all, line);
+	{
+		if (line[1] == 'a')
+			all->stack_a = rotate_function_check(all, 'a');
+		if (line[1] == 'b')
+			all->stack_b = rotate_function_check(all, 'b');
+		if (line[1] == 'r')
+		{
+			all->stack_a = rotate_function_check(all, 'a');
+			all->stack_b = rotate_function_check(all, 'b');
+		}
+	}
 	if (line[0] == 's')
 		swap_function(all, line);
+	help_exec_check(all, line);
+}
+
+void	help_exec_check(t_all *all, char *line)
+{
 	if (line[0] == 'r' && ft_strlen(line) == 3)
-		apply_reverse(all, line);
+	{
+		if (line[2] == 'a')
+			all->stack_a = rev_rotate_function_check(all, 'a');
+		if (line[2] == 'b')
+			all->stack_b = rev_rotate_function_check(all, 'b');
+		if (line[2] == 'r')
+		{
+			all->stack_a = rev_rotate_function_check(all, 'a');
+			all->stack_b = rev_rotate_function_check(all, 'b');
+		}
+	}
 	if (line[0] == 'p')
-		apply_push(all, line);
+	{
+		if (line[1] == 'b')
+			push_to_other_stack(&all->stack_a, &all->stack_b);
+		else
+			push_to_other_stack(&all->stack_b, &all->stack_a);
+	}
 }

@@ -6,11 +6,11 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 13:36:16 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/23 19:05:32 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:07:56 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "includes/push_swap.h"
 
 int	smallest_element(t_stack *list)
 {

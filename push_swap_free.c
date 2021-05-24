@@ -6,11 +6,11 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 17:33:29 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/24 16:36:21 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:07:48 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "includes/push_swap.h"
 
 void	free_stack(t_stack *head)
 {

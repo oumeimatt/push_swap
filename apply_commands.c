@@ -6,11 +6,11 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 18:21:12 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/23 18:28:30 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:06:03 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "includes/push_swap.h"
 
 void	apply_rotate(t_all *all, char *line)
 {

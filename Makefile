@@ -6,32 +6,41 @@
 #    By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 12:45:46 by oel-yous          #+#    #+#              #
-#    Updated: 2021/05/24 16:41:40 by oel-yous         ###   ########.fr        #
+#    Updated: 2021/05/24 19:14:13 by oel-yous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME 		= push_swap
 
-CC = gcc
+BONUS_NAME  = checker
 
-CFLAGS = -Wall -Wextra -Werror
+CC			= gcc
 
-SRCS = main.c\
-		utils_sort.c\
-		utils_sort2.c\
-		utils.c\
-		utils2.c\
-		leacks_cheker_ex.c\
-		operations.c\
-		apply_commands.c\
-		sort.c\
-		init.c\
-		push_min_or_max.c\
-		push_swap_free.c\
-		fill_stack.c\
+CFLAGS		= -Wall -Wextra -Werror
+
+SRCS		= main.c \
+				utils_sort.c \
+				utils_sort2.c \
+				utils.c \
+				utils2.c \
+				operations_ps.c \
+				apply_commands.c \
+				sort.c \
+				init.c \
+				push_min_or_max.c \
+				push_swap_free.c \
+				fill_stack.c \
+				is_sorted.c \
 		
+BONUS		= checker.c \
+				get_next_line.c \
+				get_next_line_utils.c \
+				read_instructions.c \
+				operations_checker.c \
 
-OBJS = $(SRCS:.c=.o)
+OBJS 		= $(SRCS:.c=.o)
+
+BONUS_OBJS 	= $(BONUS:.c=.o)
 
 all: $(NAME)
 
@@ -41,10 +50,18 @@ $(OBJS):$(SRCS)
 $(NAME): $(OBJS)
 		$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
 
+bonus:	$(BONUS_NAME)
+
+$(BONUS_OBJS):$(BONUS) $(SRCS)
+				$(CC) -c $(BONUS) $(SRCS)
+
+$(BONUS_NAME): $(BONUS_OBJS)
+				$(CC) $(OBJ) $(BONUS_OBJS) $(CFLAGS) -o $(BONUS_NAME)
+
 clean:
-		rm -rf $(OBJS)
+		rm -rf $(OBJS) $(BONUS_OBJS)
 
 fclean:clean
-		rm -rf $(NAME)
+		rm -rf $(NAME) $(BONUS_NAME)
 
 re: fclean all

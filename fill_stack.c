@@ -6,11 +6,11 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 09:10:37 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/24 16:32:55 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:07:02 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "includes/push_swap.h"
 
 void	store_data(int argc, char **argv, t_all *all)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   operations_ps.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:59:25 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/24 15:57:53 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:07:41 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "includes/push_swap.h"
 
 void	swap_function(t_all *all, char *line)
 {
@@ -20,11 +20,18 @@ void	swap_function(t_all *all, char *line)
 	list_a = all->stack_a;
 	list_b = all->stack_b;
 	if (line[1] == 'a')
+	{
+		write(1, "sa\n", 3);
 		swap_list(&list_a);
+	}
 	if (line[1] == 'b')
+	{
+		write(1, "sb\n", 3);
 		swap_list(&list_b);
+	}
 	if (line[1] == 's')
 	{
+		write(1, "ss\n", 3);
 		swap_list(&list_a);
 		swap_list(&list_b);
 	}
@@ -76,41 +83,11 @@ t_stack	*rev_rotate_function(t_all *all, char c)
 void	exec_instructions(t_all *all, char *line)
 {
 	if (line[0] == 'r' && ft_strlen(line) == 2)
-	{
-		if (line[1] == 'a')
-			all->stack_a = rotate_function(all, 'a');
-		if (line[1] == 'b')
-			all->stack_b = rotate_function(all, 'b');
-		if (line[1] == 'r')
-		{
-			all->stack_a = rotate_function(all, 'a');
-			all->stack_b = rotate_function(all, 'b');
-		}
-	}
+		apply_rotate(all, line);
 	if (line[0] == 's')
 		swap_function(all, line);
-	help_exec(all, line);
-}
-
-void	help_exec(t_all *all, char *line)
-{
 	if (line[0] == 'r' && ft_strlen(line) == 3)
-	{
-		if (line[2] == 'a')
-			all->stack_a = rev_rotate_function(all, 'a');
-		if (line[2] == 'b')
-			all->stack_b = rev_rotate_function(all, 'b');
-		if (line[2] == 'r')
-		{
-			all->stack_a = rev_rotate_function(all, 'a');
-			all->stack_b = rev_rotate_function(all, 'b');
-		}
-	}
+		apply_reverse(all, line);
 	if (line[0] == 'p')
-	{
-		if (line[1] == 'b')
-			push_to_other_stack(&all->stack_a, &all->stack_b);
-		else
-			push_to_other_stack(&all->stack_b, &all->stack_a);
-	}
+		apply_push(all, line);
 }

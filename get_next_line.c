@@ -6,11 +6,11 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 10:57:53 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/24 15:50:50 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:07:09 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "includes/push_swap.h"
 
 int	ft_finish(char **str, char **line)
 {

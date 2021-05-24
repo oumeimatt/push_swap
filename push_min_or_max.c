@@ -6,11 +6,11 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 18:49:13 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/24 16:46:43 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:07:44 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "includes/push_swap.h"
 
 void	push_min_to_b(t_all *all, int value)
 {

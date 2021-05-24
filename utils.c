@@ -6,11 +6,11 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 12:59:41 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/23 17:50:40 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 19:08:03 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "includes/push_swap.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
