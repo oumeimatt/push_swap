@@ -6,7 +6,7 @@
 #    By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 12:45:46 by oel-yous          #+#    #+#              #
-#    Updated: 2021/05/23 14:35:51 by oel-yous         ###   ########.fr        #
+#    Updated: 2021/05/24 16:41:40 by oel-yous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,20 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = main.c utils_sort.c utils.c utils2.c leacks_cheker_ex.c operations.c sort.c init.c push_swap_free.c fill_stack.c
+SRCS = main.c\
+		utils_sort.c\
+		utils_sort2.c\
+		utils.c\
+		utils2.c\
+		leacks_cheker_ex.c\
+		operations.c\
+		apply_commands.c\
+		sort.c\
+		init.c\
+		push_min_or_max.c\
+		push_swap_free.c\
+		fill_stack.c\
+		
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:03 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/23 20:01:02 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:34:54 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	store_data(argc, argv, all);
 	check_for_dup(all->stack_a);
 	read_operations(all);
-	// free_all(all);
-	check_leaks();
+	display_list(all->stack_a);
+	free_all(all);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 09:08:54 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/23 17:46:31 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:31:59 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	valid_instructions_1(char *line)
 {
-	if (line[1] == '\0')
-		return (TRUE);
 	if (line[0] == 's')
 	{
 		if (ft_strncmp(line, "sa\0", 3) != 0 && ft_strncmp(line, "sb\0", 3) != 0
@@ -69,22 +67,15 @@ void	read_operations(t_all *all)
 
 	while (get_next_line(0, &line) > 0)
 	{
-		if (line[0] == '\0')
-			break ;
 		incorrect_instruc(line);
 		exec_instructions(all, line);
 		free(line);
+		line = NULL;
 	}
-	free(line);
+	if (line)
+		free(line);
 	if (is_sorted(all->stack_a) == TRUE && all->stack_b == NULL)
-	{
-		free(all->stack_a);
 		write(1, "OK\n", 3);
-	}
 	else
-	{
-		free(all->stack_a);
-		free(all->stack_b);
 		write(1, "KO\n", 3);
-	}
 }

@@ -6,31 +6,24 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/23 17:33:29 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/23 20:43:07 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:36:21 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	free_stack(t_stack *stack)
+void	free_stack(t_stack *head)
 {
-	t_stack	*next;
-	t_stack	*delete;
+	t_stack	*tmp;
 
-	if (stack)
+	while (head != NULL)
 	{
-		// free(stack);
-		// if (stack->next)
-		// 	stack = stack->next;
-		while (stack != NULL)
-		{
-			delete = stack;
-			stack = stack->next;
-			printf("l\n");
-			if (delete->next)
-				free(delete);
-		}
-		// free(stack);
+		tmp = head;
+		free(tmp);
+		if (head->next != NULL)
+			head = head->next;
+		else
+			break ;
 	}
 }
 

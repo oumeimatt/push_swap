@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 12:29:31 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/23 17:47:27 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:37:06 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,14 @@ int	is_sorted(t_stack *head)
 		list = list->next;
 	}
 	return (TRUE);
+}
+
+void	ft_add_nod_a(t_stack **list, int val)
+{
+	t_stack	*node;
+
+	node = malloc(sizeof(t_stack));
+	node->data = val;
+	node->next = *list;
+	*list = node;
 }

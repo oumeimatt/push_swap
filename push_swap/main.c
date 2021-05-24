@@ -6,43 +6,44 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:43:29 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/23 14:43:07 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/24 16:56:13 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	display_list(t_stack *head)
+int	is_sorted(t_stack *head)
 {
-	t_stack *current = head;
-    while (current != NULL)
-    {
-        printf("%d\n" , current->data);
-        current = current->next;
-    }
+	t_stack	*list;
+
+	if (head == NULL)
+		return (TRUE);
+	list = head;
+	while (list->next != NULL)
+	{
+		if (list->data > list->next->data)
+			return (FALSE);
+		list = list->next;
+	}
+	return (TRUE);
 }
 
-int     is_sorted(t_stack *head)
+void	sort_all(t_all *all, int argc)
 {
-    t_stack *list;
-
-    if (head == NULL)
-        return (TRUE);
-    list = head;
-    while (list->next != NULL)
-    {
-        if (list->data > list->next->data)
-            return (FALSE);
-        list = list->next;
-    }
-    return (TRUE);
+	if (argc == 4)
+		sort_3_numbers(all);
+	else if (argc == 5)
+		sort_4_numbers(all);
+	else if (argc == 6)
+		sort_5_numbers(all);
+	else
+		sort_function(all);
 }
 
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    int i;
-	t_all *all;
+	int		i;
+	t_all	*all;
 
 	i = 1;
 	if (argc == 1)
@@ -58,19 +59,9 @@ int main(int argc, char **argv)
 	all = init_all(all);
 	store_data(argc, argv, all);
 	check_for_dup(all->stack_a);
-    if (argc == 4)
-        sort_3_numbers(all);
-    else if (argc == 5)
-        sort_4_numbers(all);
-    else if (argc == 6)
-        sort_5_numbers(all);
-    else
-        sort_function(all);
-    check_leaks();
-    // free_all(all);
+	sort_all(all, argc);
+	display_list(all->stack_a);
+	free_all(all);
+	check_leaks();
+	return (0);
 }
-
-
-
-// python3 pyviz.py `ruby -e "puts (-200..200).to_a.shuffle.join(' ')"`
-// ruby -e "puts (-250..250).to_a.shuffle.join(' ')"

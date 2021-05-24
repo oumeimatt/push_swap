@@ -6,50 +6,16 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:51:07 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/23 14:44:46 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/23 18:50:36 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sort_3_numbers(t_all *all)
-{
-	t_stack *list;
-
-	list = all->stack_a;
-	if (is_sorted(list) == 0)
-    	return;
-	if (list->data > list->next->data)
-	{
-		if (list->next->data < list->next->next->data)
-		{
-			if (list->data < list->next->next->data)
-				exec_instructions(all, "sa");
-			else if (list->data > list->next->next->data)
-				exec_instructions(all, "ra");
-		}
-		else
-		{
-			exec_instructions(all, "sa");
-			exec_instructions(all, "rra");
-		}
-	}
-	else
-	{
-		if (list->data < list->next->next->data)
-		{
-			exec_instructions(all, "sa");
-			exec_instructions(all, "ra");
-		}
-		else
-			exec_instructions(all, "rra");
-	}
-}
-
 void	sort_5_numbers(t_all *all)
 {
-	t_stack *list_b;
-	int	min;
+	t_stack	*list_b;
+	int		min;
 
 	min = smallest_element(all->stack_a);
 	push_min_to_b(all, min);
@@ -67,8 +33,8 @@ void	sort_5_numbers(t_all *all)
 
 void	sort_4_numbers(t_all *all)
 {
-	t_stack *list_b;
-	int	min;
+	t_stack	*list_b;
+	int		min;
 
 	min = smallest_element(all->stack_a);
 	push_min_to_b(all, min);
@@ -79,11 +45,11 @@ void	sort_4_numbers(t_all *all)
 
 void	sort_function(t_all *all)
 {
-	t_stack *list_a;
-	t_stack *list_b ;
-	int	min;
-	int	max;
-	int range;
+	t_stack	*list_a;
+	t_stack	*list_b ;
+	int		min;
+	int		max;
+	int		range;
 
 	min = smallest_element(all->stack_a);
 	max = largest_element(all->stack_a);
@@ -101,11 +67,19 @@ void	sort_function(t_all *all)
 		}
 		range += 30;
 	}
+	back_to_stack_a(all);
+}
+
+void	back_to_stack_a(t_all *all)
+{
+	t_stack	*list_b;
+	int		max;
+
 	list_b = all->stack_b;
 	while (list_b != NULL)
 	{
 		max = largest_element(all->stack_b);
-		push_min_to_a(all, max);
+		push_max_to_a(all, max);
 		list_b = all->stack_b;
 	}
 }
