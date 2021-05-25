@@ -12,16 +12,6 @@
 
 #include "includes/push_swap.h"
 
-void	display_list(t_stack *head)
-{
-	t_stack *current = head;
-    while (current != NULL)
-    {
-        printf("%d\n" , current->data);
-        current = current->next;
-    }
-}
-
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -43,12 +33,6 @@ int	main(int argc, char **argv)
 	store_data(argc, argv, all);
 	check_for_dup(all->stack_a);
 	read_operations(all);
-	printf("--------\n");
-	display_list(all->stack_a);
-	printf("--------\n");
-	printf("=========\n");
-	display_list(all->stack_b);
-	printf("==========\n");
 	free_all(all);
 	return (0);
 }
