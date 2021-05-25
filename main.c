@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:43:29 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/24 19:07:27 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:40:30 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 	int		i;
 	t_all	*all;
 
+	all = NULL;
 	i = 1;
 	if (argc == 1)
 		exit (0);

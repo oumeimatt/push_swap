@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 09:08:54 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/24 19:06:54 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:44:10 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,7 @@ void	incorrect_instruc(char *line)
 
 void	read_operations(t_all *all)
 {
-	int		ret;
 	char	*line;
-	t_stack	*list;
 
 	while (get_next_line(0, &line) > 0)
 	{

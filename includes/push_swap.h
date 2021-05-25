@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 15:05:00 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/24 19:09:48 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/25 14:41:25 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct	s_all
 
 
 // checker
-int	main(int argc, char **argv);
+// int	main(int argc, char **argv);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -64,15 +64,15 @@ void	apply_rotate(t_all *all, char *line);
 void	apply_reverse(t_all *all, char *line);
 void	apply_push(t_all *all, char *line);
 void	sort_all(t_all *all, int argc);
-int	main(int argc, char **argv);
+int		main(int argc, char **argv);
 void	swap_function(t_all *all, char *line);
 t_stack	*rotate_function(t_all *all, char c);
 t_stack	*rev_rotate_function(t_all *all, char c);
 void	exec_instructions(t_all *all, char *line);
 void	push_min_to_b(t_all *all, int value);
-void	push_min_to_b_2(t_all *all, int value, int size, int pos);
+void	push_min_to_b_2(t_all *all, int size, int pos);
 void	push_max_to_a(t_all *all, int value);
-void	push_max_to_a_2(t_all *all, int value, int size, int pos);
+void	push_max_to_a_2(t_all *all, int size, int pos);
 void	sort_5_numbers(t_all *all);
 void	sort_4_numbers(t_all *all);
 void	sort_function(t_all *all);

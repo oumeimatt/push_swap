@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/17 14:59:25 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/24 19:07:38 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/25 12:57:33 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	exec_instructions_check(t_all *all, char *line)
 		}
 	}
 	if (line[0] == 's')
-		swap_function(all, line);
+		swap_function_check(all, line);
 	help_exec_check(all, line);
 }
 
