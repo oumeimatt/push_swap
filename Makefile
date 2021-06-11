@@ -6,7 +6,7 @@
 #    By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/18 12:45:46 by oel-yous          #+#    #+#              #
-#    Updated: 2021/05/25 14:43:11 by oel-yous         ###   ########.fr        #
+#    Updated: 2021/05/25 15:53:34 by oel-yous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,9 +53,6 @@ all: $(NAME)
 
 $(NAME):$(SRCS)
 		$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
-
-#$(NAME): $(OBJS)
-#		$(CC) $(OBJS) $(CFLAGS) -o $(NAME)
 
 bonus:	$(BONUS_NAME)
 

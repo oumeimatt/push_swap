@@ -6,7 +6,7 @@
 /*   By: oel-yous <oel-yous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/18 12:43:29 by oel-yous          #+#    #+#             */
-/*   Updated: 2021/05/25 14:40:30 by oel-yous         ###   ########.fr       */
+/*   Updated: 2021/05/25 16:13:14 by oel-yous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,23 @@ int	main(int argc, char **argv)
 	t_all	*all;
 
 	all = NULL;
-	i = 1;
+	i = 0;
 	if (argc == 1)
 		exit (0);
 	else
 	{
-		while (i < argc)
-		{
+		while (++i < argc)
 			ft_atoi(argv[i]);
-			i++;
-		}
 	}
 	all = init_all(all);
 	store_data(argc, argv, all);
 	check_for_dup(all->stack_a);
+	if (is_sorted(all->stack_a) == TRUE)
+	{
+		free_all(all);
+		return (0);
+	}
 	sort_all(all, argc);
-	// display_list(all->stack_a);
 	free_all(all);
-	// check_leaks();
 	return (0);
 }
